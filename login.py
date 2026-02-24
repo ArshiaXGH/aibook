@@ -1,19 +1,25 @@
-def login():
-    """Simple login function"""
+def login(username, password):
+    """Simple login function that validates credentials."""
+    valid_users = {
+        "admin": "password123",
+        "user": "user456"
+    }
+    
+    if username in valid_users and valid_users[username] == password:
+        return True
+    return False
+
+
+def main():
+    print("=== Simple Login System ===")
     username = input("Enter username: ")
     password = input("Enter password: ")
     
-    # Simple hardcoded credentials (for demo purposes)
-    valid_username = "admin"
-    valid_password = "password123"
-    
-    if username == valid_username and password == valid_password:
-        print("Login successful!")
-        return True
+    if login(username, password):
+        print("✓ Login successful!")
     else:
-        print("Invalid username or password")
-        return False
+        print("✗ Invalid credentials. Try again.")
 
 
 if __name__ == "__main__":
-    login()
+    main()
